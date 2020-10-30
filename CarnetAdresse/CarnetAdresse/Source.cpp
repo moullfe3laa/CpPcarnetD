@@ -14,8 +14,9 @@ int main()
     string civilite;
     string adressePostale;
     map<Contact, int> Contacts;
-    ofstream myfile;
-    myfile.open("contact.cvs");
+    ofstream myfile("contact.cvs");
+    Contact c;
+
     int id = 0;
 
     while (boucle == true)
@@ -31,15 +32,15 @@ int main()
         cout << "Que voulez vous faire: "; cin >> choix;
         if (choix == 1 || choix == 2 || choix == 3 || choix == 4 || choix == 5)
         {
-            Contact c;
-            ofstream myfile("contact.cvs");
-            myfile.open("contact.cvs");
+            myfile.open("contact.cvs", ios::out | ios::app );
             if (myfile.is_open())
             {
                 if (choix == 1)
                 {
+                    
                     CarnetD d;
                     d.ajouter(c, id);
+                    id++;
                 }
                 if (choix == 2)
                 {
@@ -55,6 +56,7 @@ int main()
                 }
                 if (choix == 5)
                 {
+                    c.affiche();
                     /* while (getline(myfile, line))
                      {
                          cout << line << '\n';

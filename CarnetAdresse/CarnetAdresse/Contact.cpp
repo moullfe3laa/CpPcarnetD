@@ -12,6 +12,7 @@ map<int, Contact> Contact::getContact()
 
 void Contact::setContacts(map<int, Contact> Contacts)
 {
+    /*this->Contacts = Contacts;*/
 }
 
 Contact::Contact()
@@ -25,6 +26,24 @@ Contact::Contact(string Nom, int numero, string mail, string civilite, string ad
     this->civilite = civilite;
     this->adressePostale = adressePostale;
 
+}
+void Contact::affiche()
+{
+    map<Contact, int>::iterator it;
+    for (it = Contacts.begin(); it != Contacts.end(); it++)
+    {
+        Contact p = (it->first);
+        p.affiche();
+
+            cout << "id : " << it->second << endl;
+    }
+    /*map<Produit, int>::iterator it;
+
+for (it = lignesCmde.begin(); it != lignesCmde.end(); it++) {
+    Produit p = (it->first);
+    p.affiche();
+    cout << "Quantite : " << it->second << endl;
+}*/
 }
 
 string  Contact::getNom()
@@ -50,6 +69,10 @@ string Contact::getmail()
 void Contact::setmail(string mail_p)
 {
     this->mail = mail_p;
+}
+bool Contact::operator<(const Contact c) const
+{
+    return (Contacts < c.Contacts);
 }
 string Contact::getcivilite()
 {

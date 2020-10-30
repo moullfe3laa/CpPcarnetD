@@ -8,7 +8,7 @@ CarnetD::CarnetD()
 {
 }
 
-CarnetD::CarnetD(map<Contact, int> Contacts)
+CarnetD::CarnetD(map<int, Contact> Contacts)
 {
 	this->Contacts = Contacts;
 }
@@ -17,12 +17,12 @@ CarnetD::~CarnetD()
 {
 }
 
-map<Contact, int> CarnetD::getContact()
+map<int, Contact> CarnetD::getContact()
 {
-	return map<Contact, int>();
+	return map<int, Contact>();
 }
 
-void CarnetD::setContact(map<Contact, int> Contacts)
+void CarnetD::setContact(map<int, Contact> Contacts)
 {
 }
 
@@ -31,7 +31,7 @@ void CarnetD::affiche()
 }
 void  CarnetD::ajouter(Contact c, int id)
 {
-    ofstream myfile("carnet.cvs");
+    ofstream myfile("Carnet.cvs");
     if (myfile)
     {
         Contact c;
@@ -50,27 +50,24 @@ void  CarnetD::ajouter(Contact c, int id)
         cin >> civilite;
         cout << "adresse ? \n" << endl;
         cin >> adressePostale;
-        Contact::Contact(Nom, numero, mail, civilite, adressePostale);
-        map<Contact, int>::iterator mapIt = Contacts.begin();
-        pair<map<Contact, int>::iterator, bool> paire(mapIt, id);
-        Contacts.insert(pair<Contact, int>(c, id));
-            /* ptr = mp.insert( pair<char, int>('a', 20) ); */
-         /*map<Produit, int>::iterator mapIt = lignesCmde.begin();
-     pair<Produit, int> paire(p, qte);
-     lignesCmde.insert(mapIt, paire);*/
-        myfile << Nom << ", "
+       
+        map<int, Contact>::iterator mapIt = Contacts.end();
+        pair<int, Contact> paire(id,c);
+        Contacts.insert(mapIt, paire);
+        myfile  << Nom << ", "
             << numero << ", "
             << mail << ", "
             << civilite << ", "
             << adressePostale << ", "
             << "\n";
-        id++;
+    
     }
     else
     {
         cout << "ERREUR: Impossible d'ouvrir le fichier." << endl;
     }
 }
+
 void CarnetD::supprimer(Contact c)
 {
 }

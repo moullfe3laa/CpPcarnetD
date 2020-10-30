@@ -4,13 +4,13 @@
 class CarnetD
 {
 private:
-	map<Contact, int> Contacts;
+	map<int, Contact> Contacts;
 public:
 	CarnetD();
-	CarnetD(map<Contact, int> Contacts);
+	CarnetD(map<int, Contact> Contacts);
 	~CarnetD();
-	map<Contact, int> getContact();
-	void setContact(map<Contact, int> Contacts);
+	map<int, Contact> getContact();
+	void setContact(map<int, Contact> Contacts);
 	void affiche();
 	void ajouter(Contact c, int id);
 	void modifier(Contact c);

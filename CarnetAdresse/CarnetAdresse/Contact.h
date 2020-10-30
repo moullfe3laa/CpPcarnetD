@@ -23,6 +23,7 @@
 
 		string  getcivilite();
 		void setcivilite(string civ_p);
+		void affiche();
 
 		string getadressePostale();
 		void setadressePostale(string cpos_p);
@@ -35,7 +36,8 @@
 
 		string getmail();
 		void setmail(string mail_p);
-
+		
+		bool operator<(const Contact c) const;
 
 	};
 
